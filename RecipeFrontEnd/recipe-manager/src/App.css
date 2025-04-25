@@ -1,0 +1,38 @@
+header {
+    box-shadow: 0 4px 8px rgba(90, 85, 86, 0.1);
+    font-family: 'Montserrat', sans-serif;
+
+  }
+
+.custom-bg {
+    background-color: #ddbf86; 
+  }
+  
+  .navbar-brand {
+    font-size: 1.8rem;
+    font-weight: 600;
+
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1.1rem;
+    color: rgb(12, 12, 12);
+    font-family: 'Roboto', sans-serif;
+
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #ff0000;
+  }
+  
+  button {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  div h2 {
+    color: rgb(12, 12, 12);
+  }
+
+  
+  
