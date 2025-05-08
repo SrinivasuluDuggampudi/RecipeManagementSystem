@@ -7,7 +7,8 @@ A comprehensive full-stack web application that enables users to create, manage,
 
 ## 📚 Table of Contents
 
-- [📚 Table of Contents](#-table-of-contents)
+- [📌 Introduction](#-Introduction)
+- [🔧 Features](#-Features)
 - [🧰 Technologies Used](#-technologies-used)
 - [🧱 Application Modules](#-application-modules)
 - [📦 Project Structure](#-project-structure)
@@ -22,6 +23,30 @@ A comprehensive full-stack web application that enables users to create, manage,
 - [🤝 Contributions](#-contributions)
 
 ---
+## 📌 Introduction
+
+The Recipe Management System is a full-stack web application that enables users to create, manage, and explore a wide variety of cooking recipes through an intuitive and user-friendly interface. Built using a microservice architecture, it features a React-based frontend and a Spring Boot backend, along with a Python-powered service for handling natural language queries.
+
+The application supports secure user authentication, personalized recipe storage, and seamless interaction through a smart chatbot interface. Additionally, it integrates with external APIs to enhance recipe suggestions and provide a dynamic, modern cooking assistant experience.
+
+## 🔧 Features:
+🔐 Authentication System: Designed a secure login and registration flow using JWT tokens with a Spring Boot microservice architecture.
+
+📝 Recipe CRUD Operations: Implemented full Create, Read, Update, Delete features for user-specific recipes using Spring Boot, REST APIs, and a MySQL database.
+
+🤖 AI Chatbot Integration: Integrated a Flask-based AI chatbot using spaCy to understand user queries and respond with recipe suggestions.
+
+🍽️ Spoonacular API Support: Added intelligent recipe fallback from the Spoonacular API when user-specific data is unavailable.
+
+🧠 AI Text Processing: Implemented NLP matching to extract ingredients and cuisines using spaCy's PhraseMatcher.
+
+🧾 Frontend (React): Developed a responsive React-based UI with Bootstrap, allowing users to search, view, and manage their recipes efficiently.
+
+🧑‍🍳 JWT-Based Personalization: Recipes are tied to authenticated users, ensuring a personalized cooking experience.
+
+💬 Small Talk + Smart Prompts: AI bot can handle greetings, suggestions, and fallback gracefully with intuitive prompts.
+
+💡 Microservices Communication: Enabled clean interaction between Flask AI service and Java recipe backend via REST endpoints.
 
 ## 🧰 Technologies Used
 
