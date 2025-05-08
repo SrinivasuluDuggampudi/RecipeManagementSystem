@@ -1,119 +1,173 @@
 
-🍽️ Recipe Management System
-A comprehensive full-stack web application that allows users to create, manage, and explore a variety of recipes. Built with Java (Spring Boot) for the backend and React.js for the frontend, this system offers features like user authentication, recipe creation, editing, deletion, and AI-powered recipe suggestions.
+# 🍽️ Recipe Management System
 
-📚 Table of Contents
-Getting Started
+A comprehensive full-stack web application that enables users to create, manage, and explore a variety of recipes. Built with **Spring Boot** (Java) for the backend and **React.js** for the frontend, this system offers features like user authentication, recipe creation, editing, deletion, and AI-powered recipe suggestions.
 
-Frontend (React)
+---
 
-Backend (Java - Spring Boot)
+## 📚 Table of Contents
 
-Features
+- [📚 Table of Contents](#-table-of-contents)
+- [🧰 Technologies Used](#-technologies-used)
+- [🧱 Application Modules](#-application-modules)
+- [📦 Project Structure](#-project-structure)
+- [🛠️ How to Run](#️-how-to-run)
+  - [✅ Backend Setup](#-backend-setup)
+  - [✅ Frontend Setup](#-frontend-setup)
+- [🔐 Environment Variables](#-environment-variables)
+- [📸 Screenshots](#-screenshots)
+- [🧪 API Endpoints (Java Backend)](#-api-endpoints-java-backend)
+- [🙋‍♂️ Author](#-author)
+- [📄 License](#-license)
+- [🤝 Contributions](#-contributions)
 
-Technologies Used
+---
 
-Contributing
+## 🧰 Technologies Used
 
-License
+### Backend (Java + Spring Boot)
+- Spring Boot (REST APIs)
+- Spring Security with JWT Authentication
+- Hibernate + JPA
+- MySQL Database
+- Lombok
 
-🚀 Getting Started
-Prerequisites
-Ensure you have the following installed on your machine:
+### Frontend (React)
+- React.js (SPA)
+- React Bootstrap
+- Axios (API integration)
+- React Router
 
-Java 11 or higher
+### AI Integration
+- OpenAI GPT for smart recipe suggestions (via prompt-based input)
 
-Node.js and npm
+---
 
-MySQL
+## 🧱 Application Modules
 
-Backend Setup
-Navigate to the backend directory:
+### 🔐 Authentication Module
+- Login/Register with JWT
+- Role-based access (future-ready)
 
-bash
-Copy
-Edit
-cd RecipeBackEnd
-Configure the application.properties file with your MySQL credentials:
+### 📝 Recipe Management
+- CRUD operations for recipes
+- Each recipe includes:
+  - Name
+  - Description
+  - Ingredients
+  - Instructions
+  - Cooking Time
+  - Rating
+  - CreatedBy (username)
 
-properties
-Copy
-Edit
-spring.datasource.url=jdbc:mysql://localhost:3306/your_database
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-Build and run the backend:
+### 🤖 AI Chatbot
+- Ask the bot for ideas like:  
+  _"Suggest a vegetarian Indian dinner with paneer"_
+- If not found in user recipes, uses OpenAI to suggest ideas
 
-bash
-Copy
-Edit
-mvn clean install
-mvn spring-boot:run
-Frontend Setup
-Navigate to the frontend directory:
+---
 
-bash
-Copy
-Edit
-cd RecipeFrontEnd/recipe-manager
-Install dependencies:
+## 📦 Project Structure
 
-bash
-Copy
-Edit
-npm install
-Start the development server:
+```
+RecipeManagementSystem/
+│
+├── RecipeBackEnd/          # Spring Boot application
+│   ├── controller/
+│   ├── entity/
+│   ├── repository/
+│   ├── service/
+│   └── security/
+│
+├── RecipeFrontEnd/recipe-manager/  # React frontend
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── services/
+│   └── public/
+```
 
-bash
-Copy
-Edit
-npm start
-💻 Frontend (React)
-The frontend is developed using React.js and styled with React Bootstrap. It provides users with an intuitive interface to interact with the application.
+---
 
-Key Components
-Authentication: Login and registration forms with JWT token handling.
+## 🛠️ How to Run
 
-Recipe Management: Pages to create, view, edit, and delete recipes.
+### ✅ Backend Setup
 
-Search Functionality: Search bar to find recipes by name or description.
+1. Navigate to the backend folder:
+   ```bash
+   cd RecipeBackEnd
+   ```
+2. Configure your database in `application.properties`:
+   ```properties
+   spring.datasource.url=jdbc:mysql://localhost:3306/recipe_db
+   spring.datasource.username=root
+   spring.datasource.password=your_password
+   ```
+3. Run the application:
+   ```bash
+   mvn spring-boot:run
+   ```
 
-AI Suggestions: Interface to get recipe suggestions powered by OpenAI.
+### ✅ Frontend Setup
 
-🛠️ Backend (Java - Spring Boot)
-The backend is built with Spring Boot and handles all business logic, data processing, and API endpoints.
+1. Navigate to the frontend directory:
+   ```bash
+   cd RecipeFrontEnd/recipe-manager
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the React development server:
+   ```bash
+   npm start
+   ```
 
-Key Modules
-User Management: Handles user registration, authentication, and authorization using JWT.
+---
 
-Recipe API: CRUD operations for recipes, including search functionality.
+## 🔐 Environment Variables
 
-AI Integration: Endpoints to fetch recipe suggestions from OpenAI based on user input.
+For the frontend, create a `.env` file in the `recipe-manager` directory:
+```env
+REACT_APP_API_URL=http://localhost:8080
+REACT_APP_OPENAI_API_KEY=your_openai_api_key
+```
 
-🌟 Features
-User Authentication: Secure login and registration using JWT tokens.
+---
 
-Recipe Management: Create, edit, delete, and view recipes.
+## 📸 Screenshots
 
-AI Recipe Suggestions: Generate recipe ideas based on user input.
+> _Add `screenshots/` images and embed them here for better presentation._
 
-Search Functionality: Search recipes by name or description.
+---
 
-Responsive Design: User-friendly interface compatible with various devices.
+## 🧪 API Endpoints (Java Backend)
 
-🧰 Technologies Used
-Frontend: React.js, React Bootstrap
+| Endpoint                 | Method | Description               |
+|--------------------------|--------|---------------------------|
+| `/api/auth/register`     | POST   | Register user             |
+| `/api/auth/login`        | POST   | Login and return JWT      |
+| `/api/recipes`           | GET/POST/PUT/DELETE | Recipe CRUD |
+| `/api/recipes/search`    | GET    | Search by keyword         |
+| `/api/recipes/user`      | GET    | Recipes by logged-in user |
+| `/api/search-by-keywords`| GET    | Filter by ingredients     |
+| `/process_input` (Flask) | POST   | AI Chatbot route          |
 
-Backend: Java, Spring Boot
+---
 
-Database: MySQL
+## 🙋‍♂️ Author
 
-Authentication: JWT (JSON Web Tokens)
+**Srinivasulu Duggampudi**  
+[GitHub Profile](https://github.com/SrinivasuluDuggampudi)
 
-AI Integration: OpenAI API
+---
 
-🤝 Contributing
-Contributions are welcome! Please fork the repository and submit a pull request for any enhancements or bug fixes.
+## 📄 License
 
-📄 License
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🤝 Contributions
+
+Contributions are welcome! Feel free to fork the repository and submit a pull request for any enhancements or bug fixes.
