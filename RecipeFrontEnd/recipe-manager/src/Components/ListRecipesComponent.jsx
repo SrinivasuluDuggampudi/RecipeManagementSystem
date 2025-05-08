@@ -133,6 +133,7 @@ const ListRecipesComponent = () => {
               <Button onClick={handleSearch} variant="primary">
                 Search
               </Button>
+              
             </div>
           </div>
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -175,9 +176,26 @@ const ListRecipesComponent = () => {
             >
               +
             </Button>
-             {/*<Button href="/aigen"
-              className="btn btn-secondary"
-              ></Button>*/}
+             <Button
+              href="/aigen"
+              variant="info"
+              className="position-fixed"
+              style={{
+                bottom: "90px",
+                right: "20px",
+                width: "60px",
+                height: "60px",
+                borderRadius: "50%",
+                fontSize: "16px",
+                fontWeight: "bold",
+                padding: "0",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              🤖
+            </Button>
           </div>
         </>
       )}

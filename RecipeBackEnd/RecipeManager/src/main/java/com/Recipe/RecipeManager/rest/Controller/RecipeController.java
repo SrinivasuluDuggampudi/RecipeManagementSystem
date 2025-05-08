@@ -163,4 +163,9 @@ public class RecipeController {
         List<Recipe> results = recipeService.searchRecipes(key,user);
         return ResponseEntity.ok(results);
     }
+    @GetMapping("/search-by-keywords")
+    public List<Recipe> searchByKeywords(@RequestParam("keywords") String keywords,
+                                         @RequestParam("user") String user) {
+        return recipeService.searchRecipesByKeywords(keywords,user);
+    }
 }

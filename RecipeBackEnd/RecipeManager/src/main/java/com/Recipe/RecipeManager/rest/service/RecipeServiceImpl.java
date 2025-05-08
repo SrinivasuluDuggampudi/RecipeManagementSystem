@@ -15,8 +15,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class RecipeServiceImpl implements RecipeService{
@@ -126,5 +128,26 @@ public class RecipeServiceImpl implements RecipeService{
     @Override
     public List<Recipe> searchRecipes(String keyword,String user) {
         return recipeRepository.searchByNameOrDescription(keyword,user);
+    }
+    public List<Recipe> searchRecipesByKeywords(String keywords, String user) {
+        List<String> keywordList = Arrays.stream(keywords.split(","))
+                .map(String::trim)
+                .map(String::toLowerCase)
+                .toList();
+
+        List<Recipe> allRecipes = recipeRepository.findAll();
+
+        return allRecipes.stream()
+                .filter(recipe -> recipe.getCreatedBy().equalsIgnoreCase(user))
+                .filter(recipe -> keywordList.stream().anyMatch(keyword ->
+                        recipe.getName().toLowerCase().contains(keyword) ||
+                                recipe.getDescription().toLowerCase().contains(keyword) ||
+                                recipe.getCreatedBy().toLowerCase().contains(keyword) ||
+                                recipe.getIngredients().stream().anyMatch(ing ->
+                                        ing.getName().toLowerCase().contains(keyword)) ||
+                                recipe.getInstructions().stream().anyMatch(ins ->
+                                        ins.getStep().toLowerCase().contains(keyword)))
+                )
+                .collect(Collectors.toList());
     }
 }

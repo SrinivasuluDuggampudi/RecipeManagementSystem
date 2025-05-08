@@ -11,4 +11,6 @@ public interface RecipeService {
     Recipe saveById(int id,Recipe theRecipe);
     void delete(int id);
     List<Recipe> searchRecipes(String keyword,String user);
+
+    List<Recipe> searchRecipesByKeywords(String keywords, String user);
 }
