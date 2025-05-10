@@ -7,19 +7,19 @@ A comprehensive full-stack web application that enables users to create, manage,
 
 ## 📚 Table of Contents
 
-- [📌 Introduction](#introduction)
-- [🧰 Technologies Used](#technologies-used)
-- [🛠️ Project Setup Instructions](#project-setup-instructions)
+- [📌 Introduction](#-introduction)
+- [🧰 Technologies Used](#-technologies-used)
+- [🔧 Project Setup Instructions](#-project-setup-instructions)
   - [I. Prerequisites](#i-prerequisites)
   - [II. Clone the Repository](#ii-clone-the-repository)
   - [III. Backend Setup](#iii-backend-setup)
   - [IV. Frontend Setup](#iv-frontend-setup)
-- [📸 Screenshots](#screenshots)
-- [📄 License](#license)
-- [🤝 Contributions](#contributions)
+- [📸 Screenshots](#-screenshots)
+- [📄 License](#-license)
+- [🤝 Contributions](#-contributions)
 
 ---
-## Introduction
+## 📌 Introduction
 
 The Recipe Management System is a full-stack web application that enables users to create, manage, and explore a wide variety of cooking recipes through an intuitive and user-friendly interface. Built using a microservice architecture, it features a React-based frontend and a Spring Boot backend, along with a Python-powered service for handling natural language queries. The application supports secure user authentication, personalized recipe storage, and seamless interaction through a smart chatbot interface. Additionally, it integrates with external APIs to enhance recipe suggestions and provide a dynamic, modern cooking assistant experience.
 
@@ -76,7 +76,7 @@ The Recipe Management System is a full-stack web application that enables users 
 
 ---
 
-## Technologies Used
+## 🧰 Technologies Used
 
 - ### Backend (Java + Spring Boot)
   * Spring Boot (REST APIs), Spring Security with JWT Authentication, Hibernate + JPA, Lombok
@@ -98,7 +98,7 @@ The Recipe Management System is a full-stack web application that enables users 
 
 ---
 
-## Project Setup Instructions
+## 🔧 Project Setup Instructions
 
 ### I. Prerequisites
 
@@ -209,7 +209,7 @@ The Recipe Management System is a full-stack web application that enables users 
 
 ---
 
-## Screenshots
+## 📸 Screenshots
 
 - ### Landing Page
 ![Landing](./screenshots/LandingPage.png)
@@ -242,14 +242,14 @@ The Recipe Management System is a full-stack web application that enables users 
 
 ---
 
-## License
+## 📄 License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).  
 You are free to use, modify, and distribute this software with proper attribution.
 
 
 ---
-## Contributions
+## 🤝 Contributions
 
 Contributions are welcome!  
 If you’d like to improve this project, feel free to fork the repository and submit a pull request.
