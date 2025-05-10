@@ -7,192 +7,258 @@ A comprehensive full-stack web application that enables users to create, manage,
 
 ## 📚 Table of Contents
 
-- [📌 Introduction](#-Introduction)
-- [🔧 Features](#-Features)
+- [📌 Introduction](#-introduction)
 - [🧰 Technologies Used](#-technologies-used)
-- [🧱 Application Modules](#-application-modules)
-- [📦 Project Structure](#-project-structure)
-- [🛠️ How to Run](#️-how-to-run)
-  - [✅ Backend Setup](#-backend-setup)
-  - [✅ Frontend Setup](#-frontend-setup)
-- [🔐 Environment Variables](#-environment-variables)
+- [⚙️ Project Setup Instructions](#-project-setup-instructions)
+  - [I. Prerequisites](#i-prerequisites)
+  - [II. Clone the Repository](#ii-clone-the-repository)
+  - [III. Backend Setup](#iii-backend-setup)
+  - [IV. Frontend Setup](#iv-frontend-setup)
 - [📸 Screenshots](#-screenshots)
-- [🧪 API Endpoints (Java Backend)](#-api-endpoints-java-backend)
-- [🙋‍♂️ Author](#-author)
 - [📄 License](#-license)
 - [🤝 Contributions](#-contributions)
 
 ---
 ## 📌 Introduction
 
-The Recipe Management System is a full-stack web application that enables users to create, manage, and explore a wide variety of cooking recipes through an intuitive and user-friendly interface. Built using a microservice architecture, it features a React-based frontend and a Spring Boot backend, along with a Python-powered service for handling natural language queries.
+The Recipe Management System is a full-stack web application that enables users to create, manage, and explore a wide variety of cooking recipes through an intuitive and user-friendly interface. Built using a microservice architecture, it features a React-based frontend and a Spring Boot backend, along with a Python-powered service for handling natural language queries. The application supports secure user authentication, personalized recipe storage, and seamless interaction through a smart chatbot interface. Additionally, it integrates with external APIs to enhance recipe suggestions and provide a dynamic, modern cooking assistant experience.
 
-The application supports secure user authentication, personalized recipe storage, and seamless interaction through a smart chatbot interface. Additionally, it integrates with external APIs to enhance recipe suggestions and provide a dynamic, modern cooking assistant experience.
+ ### Key Features :
 
-## 🔧 Features:
-🔐 Authentication System: Designed a secure login and registration flow using JWT tokens with a Spring Boot microservice architecture.
+ - **Authentication System:** Designed a secure login and registration flow using **JWT tokens** within a **Spring Boot microservice architecture**.
 
-📝 Recipe CRUD Operations: Implemented full Create, Read, Update, Delete features for user-specific recipes using Spring Boot, REST APIs, and a MySQL database.
+ - **Recipe CRUD Operations:** Implemented full **Create, Read, Update, and Delete (CRUD)** functionality for user-specific recipes using **Spring Boot**, **REST APIs**, and a **MySQL database**.
 
-🤖 AI Chatbot Integration: Integrated a Flask-based AI chatbot using spaCy to understand user queries and respond with recipe suggestions.
+ - **Frontend (React):** Built a responsive **React** user interface styled with **Bootstrap**, allowing users to easily search, view, and manage recipes.
 
-🍽️ Spoonacular API Support: Added intelligent recipe fallback from the Spoonacular API when user-specific data is unavailable.
+ - **JWT-Based Personalization:** Linked recipes to individual authenticated users using **JWT**, enabling a **personalized cooking experience**.
 
-🧠 AI Text Processing: Implemented NLP matching to extract ingredients and cuisines using spaCy's PhraseMatcher.
+ - **Microservices Communication:** Enabled seamless interaction between the **Flask AI microservice** and **Java-based recipe backend** using **RESTful APIs**. 
 
-🧾 Frontend (React): Developed a responsive React-based UI with Bootstrap, allowing users to search, view, and manage their recipes efficiently.
+ - **Feign Client Integration:** Used **Feign Client** to enable seamless interaction between the **Recipe** and **Authentication microservices** for secure user validation and recipe personalization.
 
-🧑‍🍳 JWT-Based Personalization: Recipes are tied to authenticated users, ensuring a personalized cooking experience.
+ - **AI Chatbot Integration:** Integrated a **Flask-based AI chatbot** using **spaCy PhraseMatcher** to understand user queries and provide recipe suggestions. 
 
-💬 Small Talk + Smart Prompts: AI bot can handle greetings, suggestions, and fallback gracefully with intuitive prompts.
+ - **Spoonacular API Support:** Added intelligent recipe fallback support using the **Spoonacular API** when user-specific data is not available.
 
-💡 Microservices Communication: Enabled clean interaction between Flask AI service and Java recipe backend via REST endpoints.
+ - **Small Talk + Smart Prompts:** AI bot responds to greetings, handles suggestions, and provides fallback responses using intuitive prompt flows.
+
+### Key Components & Functionality :
+
+- ### Authentication UI
+  * Handles **user login and registration**.
+  * On successful login, **JWT token** is stored in `localStorage` for subsequent requests.
+  * Displays different UI states based on login status (e.g., access to recipe features only when logged in).
+
+- ### Recipe Listing and Search
+   * Fetches user-specific recipes using their JWT token.
+   * Provides **search functionality** to filter recipes by name or description.
+   * Supports **view, edit, and delete** actions for each recipe with REST API integration.
+
+- ### Add/Edit Recipe
+   * React forms are used to submit recipe data (name, description, ingredients, instructions, etc.).
+   * Sends data to the backend via `axios` POST/PUT requests.
+   * Recipes are tied to the logged-in user via token-based personalization.
+
+- ### AI Chatbot Integration
+   * An **AI Recipe Bot** UI allows users to ask recipe-related questions (e.g., "suggest something with paneer").
+   * Sends the user’s query and token to the **Flask-based AI microservice**, which returns recipe suggestions.
+   * Suggestions are displayed with links to view the detailed recipe.
+
+- ### Routing and Navigation
+   * Uses `react-router-dom` to handle navigation (e.g., `/addRecipe`, `/edit/recipe/:id`, `/view/recipe/:id`, `/aigen`).
+   * Ensures that protected routes redirect unauthenticated users.
+
+- ### UI/UX Features
+   * Uses **Bootstrap components** for styling and layout (cards, buttons, inputs, forms).
+   * Includes user-friendly messages and fallback views when not logged in or when no recipes are found.
+   * Floating "+" button to easily add a new recipe, styled with rounded design.
+
+
 
 ## 🧰 Technologies Used
 
-### Backend (Java + Spring Boot)
-- Spring Boot (REST APIs)
-- Spring Security with JWT Authentication
-- Hibernate + JPA
-- MySQL Database
-- Lombok
+- ### Backend (Java + Spring Boot)
+  * Spring Boot (REST APIs), Spring Security with JWT Authentication, Hibernate + JPA, Lombok
 
-### Frontend (React)
-- React.js (SPA)
-- React Bootstrap
-- Axios (API integration)
-- React Router
+- ### Backend (Python)
+   * Flask, spaCy, Spoonacular API
 
-### AI Integration
-- OpenAI GPT for smart recipe suggestions (via prompt-based input)
+- ### Frontend (React)
+   * React.js (SPA), React Bootstrap, Axios (API integration), React Router
 
----
+- ### Database
+   * MySQL Database
 
-## 🧱 Application Modules
+- ### Testing Frameworks
+   * JUnit, Mockito
 
-### 🔐 Authentication Module
-- Login/Register with JWT
-- Role-based access (future-ready)
-
-### 📝 Recipe Management
-- CRUD operations for recipes
-- Each recipe includes:
-  - Name
-  - Description
-  - Ingredients
-  - Instructions
-  - Cooking Time
-  - Rating
-  - CreatedBy (username)
-
-### 🤖 AI Chatbot
-- Ask the bot for ideas like:  
-  _"Suggest a vegetarian Indian dinner with paneer"_
-- If not found in user recipes, uses OpenAI to suggest ideas
+- ### Development Tools
+   * Vite, npm, Postman, IntelliJ, Git
 
 ---
 
-## 📦 Project Structure
+## ⚙️ Project Setup Instructions
 
-```
-RecipeManagementSystem/
-│
-├── RecipeBackEnd/          # Spring Boot application
-│   ├── controller/
-│   ├── entity/
-│   ├── repository/
-│   ├── service/
-│   └── security/
-│
-├── RecipeFrontEnd/recipe-manager/  # React frontend
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── services/
-│   └── public/
-```
+## I. Prerequisites
 
----
+Before running the project, ensure that the following tools and dependencies are installed on your machine:
 
-## 🛠️ How to Run
+   - **Git** (for cloning the repository) - [Installl Git](https://git-scm.com/downloads)
+   - **Java** (for running the Spring Boot backend) - [Install Java](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
+   - **Maven** (for building the Spring Boot backend) - [Install Maven](https://maven.apache.org/install.html)
+   - **Node.js** (for running the React frontend) - [Install Node.js](https://nodejs.org/en/download/)
+   - **Python** (for running the AI chatbot service) - [Install Python](https://www.python.org/downloads/)
+   - **MySQL** (for the database) - [Install MySQL](https://dev.mysql.com/downloads/installer/)
+   - **Spoonacular API** (for AI Gen, Create API Key) - [Spoonacular API](https://api.spoonacular.com/recipes/complexSearch)
+   - **Postman or any API testing tool** (for testing the API calls) - [Install Postman](https://www.postman.com/)
 
-### ✅ Backend Setup
+### II. Clone the Repository
 
-1. Navigate to the backend folder:
+   Open your terminal or Git Bash and clone the repository:
+
    ```bash
-   cd RecipeBackEnd
+   git clone https://github.com/SrinivasuluDuggampudi/RecipeManagementSystem.git
    ```
-2. Configure your database in `application.properties`:
-   ```properties
-   spring.datasource.url=jdbc:mysql://localhost:3306/recipe_db
-   spring.datasource.username=root
-   spring.datasource.password=your_password
+
+## III. Backend Setup
+
+* ### Spring Boot (Java) Backend
+
+   1. **Navigate to the backend directory after git clone and import this project using IntelliJ and make sure JDK path is added in Environmental Variables**:
+
+   ```bash
+   cd /RecipeManagementSystem/RecipeBackEnd
    ```
-3. Run the application:
+
+   2. **Install dependencies using Maven** (you may need Maven installed on your machine):
+
+   ```bash
+   mvn clean install
+   ```
+
+   3. **Configure the database**:  
+      - Create a MySQL database Workspace and create tables as per Recipe_Scripts.sql File which is present in RecipeBackEnd and update the database configurations in `application.properties` (found in `src/main/resources`) accordingly.
+      - Make sure to configure your `username`, `password`, and `URL` for your MySQL database.
+
+   4. **Run both the Microservices (RecipeManagerApplication and AuthApplication)**:
+
    ```bash
    mvn spring-boot:run
    ```
 
-### ✅ Frontend Setup
+   5. Once the backend is running, Recipe Service available on `http://localhost:8080` and Auth Service will be available on `http://localhost:8082`.
 
-1. Navigate to the frontend directory:
+* ### Python-based Chatbot Service (Flask)
+
+   1. **Navigate to the chatbot directory**:
+
    ```bash
-   cd RecipeFrontEnd/recipe-manager
+   cd ../RecipeManagementSystem/RecipeBackEnd/Python_Backend
    ```
-2. Install dependencies:
+
+   2. **Install required Python dependencies**:
+
+   ```bash
+   pip install -r requirements.txt
+   pip install flask spacy requests flask-cors
+   pip install numpy --prefer-binary
+   pip install spacy --prefer-binary
+   pip install flask-cors
+   python -m spacy download en_core_web_sm
+   ```
+
+   3. **Run the Flask app using CMD Terminal or Git Bash**:
+
+   ```bash
+   python Recipebot.py
+   ```
+
+   4. This will start the AI chatbot service on `http://localhost:5000`.
+
+## IV. Frontend Setup
+
+   i. **Navigate to the frontend directory**:
+
+   ```bash
+   cd ../RecipeManagementSystem/RecipeFrontEnd
+   ```
+
+   ii. **Install the required Node.js dependencies**:
+
    ```bash
    npm install
    ```
-3. Start the React development server:
-   ```bash
-   npm start
-   ```
 
----
+   iii. **Start the React development server**:
 
-## 🔐 Environment Variables
+   - Navigate to the frontend directory:
+      ```bash
+      cd RecipeFrontEnd/recipe-manager
+      ```
+   - ByPass Policies if asks:
+      ```bash
+      Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+      ```   
+   - Start the React development server:
+      ```bash
+      npm run dev
+      ```
 
-For the frontend, create a `.env` file in the `recipe-manager` directory:
-```env
-REACT_APP_API_URL=http://localhost:8080
-REACT_APP_OPENAI_API_KEY=your_openai_api_key
-```
+   iv. The frontend will now be available at `http://localhost:3000` in your web browser.
 
 ---
 
 ## 📸 Screenshots
 
-> _Add `screenshots/` images and embed them here for better presentation._
+- ### Landing Page
+![Landing](./screenshots/LandingPage.png)
+
+- ### Login Page
+![Login](./screenshots/LoginPage.png)
+
+- ### Dashboard
+![Dashboard](./screenshots/RecipePage.png)
+
+- ### View Recipe
+![View](./screenshots/ViewRecipePage.png)
+
+- ### Add Recipe S1
+![Add1](./screenshots/AddRecipePage1.png)
+
+- ### Add Recipe S2
+![Add2](./screenshots/AddRecipePage2.png)
+
+- ### AI Chatbot S1 
+![Chatbot2](./screenshots/AIPage3.png)
+
+- ### AI Chatbot S2
+![Chatbot1](./screenshots/AIPage1.png)
+
+- ### AI Chatbot S3 
+![Chatbot2](./screenshots/AIPage2.png)
+
+
 
 ---
-
-## 🧪 API Endpoints (Java Backend)
-
-| Endpoint                 | Method | Description               |
-|--------------------------|--------|---------------------------|
-| `/api/auth/register`     | POST   | Register user             |
-| `/api/auth/login`        | POST   | Login and return JWT      |
-| `/api/recipes`           | GET/POST/PUT/DELETE | Recipe CRUD |
-| `/api/recipes/search`    | GET    | Search by keyword         |
-| `/api/recipes/user`      | GET    | Recipes by logged-in user |
-| `/api/search-by-keywords`| GET    | Filter by ingredients     |
-| `/process_input` (Flask) | POST   | AI Chatbot route          |
-
 ---
-
-## 🙋‍♂️ Author
-
-**Srinivasulu Duggampudi**  
-[GitHub Profile](https://github.com/SrinivasuluDuggampudi)
-
----
-
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).  
+You are free to use, modify, and distribute this software with proper attribution.
 
 ---
-
+---
 ## 🤝 Contributions
 
-Contributions are welcome! Feel free to fork the repository and submit a pull request for any enhancements or bug fixes.
+Contributions are welcome!  
+If you’d like to improve this project, feel free to fork the repository and submit a pull request.
+
+Before contributing:
+- Make sure your code is well-documented
+- Follow the existing code style
+- Test your changes thoroughly
+
+For major changes, please open an issue first to discuss what you'd like to change.
+
+---
