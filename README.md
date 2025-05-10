@@ -241,13 +241,13 @@ Before running the project, ensure that the following tools and dependencies are
 
 
 ---
----
+
 ## 📄 License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).  
 You are free to use, modify, and distribute this software with proper attribution.
 
----
+
 ---
 ## 🤝 Contributions
 
